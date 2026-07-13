@@ -1,6 +1,657 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA VOGUE | Haute Couture & Modern Essentials</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & BASICS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #111111;
+            --accent: #b8977e;
+            --bg-light: #fcfbfa;
+            --text-muted: #666666;
+            --border-color: #eeeeee;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(252, 251, 250, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 20px 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav ul a {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        nav ul a:hover, nav ul a.active {
+            color: var(--accent);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 36px;
+            background-color: #ffffff;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            border: 1px solid transparent;
+        }
+
+        .cta-btn:hover {
+            background-color: transparent;
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+
+        /* --- LAYOUT & MAIN SECTIONS --- */
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- PHILOSOPHY (TEXT COMPONENT) --- */
+        .philosophy-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .philosophy-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .philosophy-text p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+
+        .philosophy-img img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-left: 8px solid var(--accent);
+        }
+
+        /* --- PRODUCT SHOWCASE --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img-wrapper img {
+            transform: scale(1.06);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary);
+            color: #ffffff;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .product-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--accent);
+        }
+
+        /* --- THE BASICS SECTION (EDITORIAL) --- */
+        .basics-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .basics-box {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-top: 3px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .basics-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .basics-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* --- ESSENTIAL EXTRA ESSAY CONTENT SECTION --- */
+        .editorial-deep-dive {
+            background-color: #f4f1ee;
+            padding: 80px 8%;
+        }
+        .editorial-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .editorial-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .editorial-content p {
+            font-size: 0.95rem;
+            color: #444444;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--primary);
+            color: #ffffff;
+            padding: 60px 8% 30px;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #cccccc;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #222222;
+            padding-top: 30px;
+            color: #888888;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media(max-width: 992px) {
+            .philosophy-container {
+                grid-template-columns: 1fr;
+            }
+            .basics-layout {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media(max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION MENU -->
+    <header>
+        <div class="logo"><a href="#">Aura<span>Vogue</span></a></div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#philosophy">Our Vision</a></li>
+                <li><a href="#products">Collection</a></li>
+                <li><a href="#basics">The Basics</a></li>
+                <li><a href="#editorial">Style Guide</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <span>Search</span>
+            <span>Bag (0)</span>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Define Your Signature Style</h1>
+            <p>Impeccable craftsmanship, sustainably sourced fabrics, and elegant silhouettes crafted for the modern individual.</p>
+            <a href="#products" class="cta-btn">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- BRAND PHILOSOPHY / MENU CONTEXT -->
+    <section id="philosophy">
+        <div class="section-header">
+            <h2>The Craft of Curating Comfort</h2>
+            <p>Why modern wardrobing demands a thoughtful architectural approach to personal style.</p>
+        </div>
+        <div class="philosophy-container">
+            <div class="philosophy-text">
+                <h3>Every garment holds a narrative.</h3>
+                <p>Fashion is far more than temporary indulgence or transient cycles; it is the ultimate language of self-expression. At Aura Vogue, we reject the volatile cycles of fast fashion to embrace enduring aesthetic logic. Our creations marry form and utility seamlessly, ensuring that your investment stands the test of absolute longevity.</p>
+                <p>We work exclusively with ethical textile mills operating on strict fair-wage principles. By employing exceptional double-stitched technical construction, natural organic flax linens, supreme mulberry silk elements, and structured virgin wool varieties, our apparel responds elegantly to your daily movements.</p>
+                <p>Building an iconic wardrobe does not mean accumulating excess. It is an editorial process of finding foundational menu building blocks that transition harmoniously across changing landscapes, formal dynamic contexts, and unpredictable seasons.</p>
+            </div>
+            <div class="philosophy-img">
+                <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=80" alt="Tailoring craftsmanship">
+            </div>
+        </div>
+    </section>
+
+    <!-- FASHION PRODUCT SHOWCASE -->
+    <section id="products">
+        <div class="section-header">
+            <h2>The Seasonal Exhibit</h2>
+            <p>Carefully engineered capsule items designed to anchor your wardrobe with sophisticated luxury.</p>
+        </div>
+        <div class="product-grid">
+            
+            <!-- Product 1 -->
+            <div class="product-card">
+                <span class="badge">Signature</span>
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80" alt="Classic Minimalist Trench Coat">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Outerwear</span>
+                    <h3 class="product-title">Minimalist Trench Coat</h3>
+                    <p class="product-price">$285.00</p>
+                    <button class="add-to-cart-btn" onclick="addToCart('Minimalist Trench Coat')">Add To Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <span class="badge">Essential</span>
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1548624149-f8b17d54e430?auto=format&fit=crop&w=600&q=80" alt="Structured Silk Blouse">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Tops</span>
+                    <h3 class="product-title">Structured Silk Blouse</h3>
+                    <p class="product-price">$145.00</p>
+                    <button class="add-to-cart-btn" onclick="addToCart('Structured Silk Blouse')">Add To Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <span class="badge">Limited</span>
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=600&q=80" alt="Tailored Wool Trousers">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Bottoms</span>
+                    <h3 class="product-title">Tailored Wool Trousers</h3>
+                    <p class="product-price">$195.00</p>
+                    <button class="add-to-cart-btn" onclick="addToCart('Tailored Wool Trousers')">Add To Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <span class="badge">New Arrivals</span>
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80" alt="Monochrome Knit Dress">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Dresses</span>
+                    <h3 class="product-title">Monochrome Knit Dress</h3>
+                    <p class="product-price">$220.00</p>
+                    <button class="add-to-cart-btn" onclick="addToCart('Monochrome Knit Dress')">Add To Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FASHION BASICS MENU & BLUEPRINTS -->
+    <section id="basics" style="background-color: #f7f6f4;">
+        <div class="section-header">
+            <h2>The Absolute Basics</h2>
+            <p>Every pristine outfit relies on structural foundations. Discover your style pillars.</p>
+        </div>
+        <div class="basics-layout">
+            <div class="basics-box">
+                <h3>01. Premium Pima Cotton Tees</h3>
+                <p>The unrecognized workhorse of luxury style. Our tees boast an elongated fiber build that resists pilling, stretching, and distortion through extensive wash cycles. The knit features an ideal weight distribution, ensuring perfect layering underneath heavy structured blazers or relaxed, breathable styling during mid-summer getaways.</p>
+                <p>Investing heavily in dynamic basics elevates adjacent elements, changing basic denim instantly into an intentional, highly tailored statement.</p>
+            </div>
+            <div class="basics-box">
+                <h3>02. Architectural Denim</h3>
+                <p>Denim is a canvas of utilitarian heritage transformed into high-fashion expression. Engineered from custom raw Japanese selvedge denim blends, these pieces gently shape to your unique posture over time. Featuring reinforced seams and minimal high-contrast hardware, they embody clean geometric design.</p>
+                <p>From office meetings when paired with sharp oxfords to casual evening gallery walks, they remain absolutely classic.</p>
+            </div>
+            <div class="basics-box">
+                <h3>03. Fine Merino Layering</h3>
+                <p>Temperature regulation meets beautiful visual depth. Our responsibly harvested Australian merino knitwear provides exceptional thermal management without unappealing bulk. It fits closely against the skin for a flattering frame while offering fluid drape qualities.</p>
+                <p>This is a fundamental pillar for smart travel packaging, packing down compactly while refreshing effortlessly with simple steaming.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AN EXTENSIVE EDITORIAL DEEP DIVE (BRINGING COPYWRITING WORDCOUNT EXCELLENCE) -->
+    <section id="editorial" class="editorial-deep-dive">
+        <div class="editorial-content">
+            <h3>The Philosophy of Wardrobe Geometry & Color Menus</h3>
+            <p>True sophistication exists at the intersection of absolute comfort and deliberate visual structure. When we observe historical style icons, their impact stems not from chasing trends, but from mastering their personal wardrobe menu. This structural menu serves as an individualized blueprint, outlining how garments connect, contrast, and balance scale across different settings.</p>
+            <p>To master this concept, one must evaluate the silhouettes they introduce into their daily lives. A structural coat creates a strong framework, projecting authority and refinement regardless of the base layer. Underneath this armor, soft, high-quality textiles like silk or fine cotton add approachable texture. This juxtaposition creates visual intrigue, transforming a simple outfit into a compelling narrative of style.</p>
+            <p>Equally critical is the color palette menu. While bright trends captivate momentarily, a base of sophisticated neutrals—deep obsidian, warm oat, muted olive, and pristine cream—creates endless versatility. A cohesive palette ensures that every piece coordinates effortlessly, removing friction from dressing well. By standardizing your color foundation, accents like a bold crimson handbag or polished brass hardware transform from mere accessories into intentional focal points.</p>
+            <p>Ultimately, sustainable style depends on structural integrity. We design garments to withstand the test of time, utilizing robust French seams, reinforced button paths, and pre-shrunk organic fibers. Luxury is defined by the peace of mind that comes from pieces that fit immaculately and look pristine through years of wear. By curate rather than consuming, you build a lasting legacy of personal style.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Aura Vogue</h4>
+                <p style="color: #aaa; font-size: 0.85rem; margin-top: 10px;">Crafting conscious luxury essentials for contemporary living globally.</p>
+            </div>
+            <div class="footer-col">
+                <h4>The Style Menu</h4>
+                <ul>
+                    <li><a href="#products">New Tailoring</a></li>
+                    <li><a href="#basics">Minimalist Knits</a></li>
+                    <li><a href="#basics">Denim Blueprints</a></li>
+                    <li><a href="#products">Capsule Accessories</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company Registry</h4>
+                <ul>
+                    <li><a href="#philosophy">Our Conscious Journey</a></li>
+                    <li><a href="#editorial">Sustainability Protocol</a></li>
+                    <li><a href="#">Artisan Biographies</a></li>
+                    <li><a href="#">Press Room</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Client Support</h4>
+                <ul>
+                    <li><a href="#">Virtual Styling Appointments</a></li>
+                    <li><a href="#">Garment Care & Repair</a></li>
+                    <li><a href="#">Global Fulfillment Policy</a></li>
+                    <li><a href="#">Returns Portal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 AURA VOGUE ARCHIVES. ALL RIGHTS RESERVED. DESIGNED FOR TIMELESS LEGACY.
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPT FOR USER EXPERIENCE -->
+    <script>
+        function addToCart(productName) {
+            alert(productName + " has been added smoothly to your curated selection.");
+            
+            // Dynamic UI updates for engagement
+            const bags = document.querySelectorAll('.nav-actions span');
+            bags.forEach(el => {
+                if(el.textContent.includes('Bag')) {
+                    let currentCount = parseInt(el.textContent.replace(/[^0-9]/g, '')) || 0;
+                    currentCount++;
+                    el.textContent = `Bag (${currentCount})`;
+                    el.style.color = '#b8977e';
+                    setTimeout(() => { el.style.color = 'inherit'; }, 500);
+                }
+            });
+        }
+
+        // Simple smooth scroll link active indicator toggling
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 120) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                } else if (!currentSectionId && link.getAttribute('href') === '#') {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Veloura Fashion</title>
